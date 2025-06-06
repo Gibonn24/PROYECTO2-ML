@@ -9,7 +9,6 @@ import seaborn as sns
 import warnings
 import os
 import tempfile
-import cv2
 import requests
 import glob
 from sklearn.metrics.pairwise import cosine_similarity
