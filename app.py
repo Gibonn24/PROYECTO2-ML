@@ -1,25 +1,28 @@
 import traceback
+import streamlit as st
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import umap.umap_ as umap
+from sklearn.decomposition import PCA, TruncatedSVD
+from collections import deque
+import seaborn as sns
+import warnings
+import os
+import tempfile
+import requests
+import glob
+from sklearn.metrics.pairwise import cosine_similarity
+from sklearn.metrics import silhouette_score, normalized_mutual_info_score
+from utils.funciones import extract_features, kmeans, dbscan
+import sys
+# Patch for legacy pickled objects referencing deprecated numpy paths
+sys.modules.setdefault('numpy._core', np.core)
+sys.modules.setdefault('numpy._core.numeric', np.core.numeric)
+
 try:
     st.write("✅ La app arrancó...")
-    # tus imports y funciones aquí
-
-    import streamlit as st
-    import pandas as pd
-    import numpy as np
-    import matplotlib.pyplot as plt
-    import umap.umap_ as umap
-    from sklearn.decomposition import PCA, TruncatedSVD
-    from collections import deque
-    import seaborn as sns
-    import warnings
-    import os
-    import tempfile
-    import requests
-    import glob
-    from sklearn.metrics.pairwise import cosine_similarity
-    from sklearn.metrics import silhouette_score, normalized_mutual_info_score
-    from utils.funciones import extract_features, kmeans, dbscan
-
+    # tus imports y funciones aqu
     st.title("Análisis de Componentes Principales (PCA & SVD)")
 
     # Ruta local al archivo .pkl
