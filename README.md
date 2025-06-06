@@ -1,7 +1,7 @@
 # 🎬 Recomendador de Películas por Similitud Visual
 Este proyecto implementa un sistema de recomendación de películas basado en la similitud visual de los pósters. Utiliza técnicas de visión por computadora y aprendizaje automático para extraer características visuales y agrupar películas similares. Además, permite al usuario subir una imagen personalizada para obtener recomendaciones basadas en ella.
 
-🚀 Características Principales
+## 🚀 Características Principales
 Extracción de Características Visuales: Se extraen histogramas de color (RGB y HSV), descriptores HOG, SIFT y momentos de Zernike de los pósters de películas.
 
 Reducción de Dimensionalidad: Se aplican técnicas como PCA, SVD y UMAP para reducir la dimensionalidad de los datos y facilitar la visualización y el clustering.
@@ -14,7 +14,7 @@ Recomendaciones Personalizadas: Permite al usuario ingresar un imdbId o subir un
 
 Integración con TMDb API: Recupera información y pósters de películas utilizando la API de The Movie Database (TMDb).
 
-🛠️ Tecnologías Utilizadas
+## 🛠️ Tecnologías Utilizadas
 Lenguaje de Programación: Python
 
 Librerías Principales:
@@ -35,7 +35,7 @@ Requests - Para realizar solicitudes HTTP a la API de TMDb.
 
 
 
-📸 Uso de la Aplicación
+## 📸 Uso de la Aplicación
 Análisis de Componentes Principales: Visualiza la varianza explicada por PCA y SVD.
 
 Clustering: Ajusta los parámetros de K-Means++ y DBSCAN para agrupar películas.
