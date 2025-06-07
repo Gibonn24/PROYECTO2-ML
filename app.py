@@ -11,11 +11,13 @@ import warnings
 import os
 import tempfile
 import requests
+import psutil
 import glob
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.metrics import silhouette_score, normalized_mutual_info_score
 from utils.funciones import extract_features, kmeans, dbscan
 import sys
+os.environ["STREAMLIT_FILE_WATCHER_TYPE"] = "none"
 # Patch for legacy pickled objects referencing deprecated numpy paths
 sys.modules.setdefault('numpy._core', np.core)
 sys.modules.setdefault('numpy._core.numeric', np.core.numeric)
@@ -30,8 +32,14 @@ try:
     @st.cache_data
     def load_data():
         # Leer y juntar todos los .pkl divididos
+        process = psutil.Process()
+        mem_info = process.memory_info()
+        mem_used_mb = mem_info.rss / (1024 ** 2)
         chunk_paths = sorted(glob.glob("data/features_part_*.pkl"))
         dataframes = [pd.read_pickle(path) for path in chunk_paths]
+        if mem_used_mb > 1900:
+            st.error("🚨 Estás usando casi toda la RAM disponible (2 GB)")
+
         df_total = pd.concat(dataframes, ignore_index=True)
         return df_total
 
